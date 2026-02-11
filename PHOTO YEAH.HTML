@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Motorcycle Gallery Preview</title>
+    <style>
+        body {
+            font-family: "Times New Roman", sans-serif;
+            text-align: center;
+            background-color: #333;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #image {
+            width: 600px;
+            height: 350px;
+            border: 6px solid #555;
+            background-color: #8e8e8e;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            font-size: 24px;
+            line-height: 350px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: background-image 0.3s ease-in-out;
+        }
+
+        .preview {
+            width: 200px;
+            height: 110px;
+            border: 2px solid gray;
+            cursor: pointer;
+            transition: transform 0.2s;
+            object-fit: cover;
+        }
+
+        .preview:hover {
+            transform: scale(1.05);
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CLICK A PHOTO!</h1>
+
+    <div class="container">
+        <div class="sidebar">
+            <img class="preview" 
+                 
+                 src="https://ridermagazine.com/wp-content/uploads/2008/10/2009-Star-Vmax-10.jpg" 
+                 onclick="upDate(this)">
+
+            <img class="preview" 
+                 
+                 src="https://beebrandstechnology.com/wp-content/uploads/2026/01/Suzuki-Boulevard-C50-1024x576-1-768x432.webp" 
+                 onclick="upDate(this)">
+
+            <img class="preview" 
+                
+                 src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=600&h=350&fit=crop" 
+                 onclick="upDate(this)">
+        </div>
+
+        <div id="image">clicky!</div>
+    </div>
+
+    <script>
+        function upDate(previewPic) {
+            const displayDiv = document.getElementById("image");
+            displayDiv.style.backgroundImage = "url('" + previewPic.src + "')";
+            displayDiv.innerHTML = previewPic.alt;
+        }
+
+        function undo() {
+            const displayDiv = document.getElementById("image");
+            displayDiv.style.backgroundImage = "url('')";
+            displayDiv.innerHTML = "clicky!";
+        }
+    </script>
+
+</body>
+</html>
